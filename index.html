@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="description" content="Explore NxtGen cloud, AI and digital infrastructure brochures." />
+    <title>NxtGen | Solution Portfolio</title>
+    <link rel="icon" href="assets/nxtgen-blue.png" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="#top" aria-label="NxtGen home">
+          <img src="assets/nxtgen-blue.png" alt="NxtGen" />
+        </a>
+        <div class="topbar-actions">
+          <span class="secure-label"><span class="status-dot"></span> CIO&amp;Leader Conference · Jaipur</span>
+        </div>
+      </header>
+
+      <main id="top">
+        <section class="intro" aria-labelledby="mainTitle">
+          <svg class="ai-network" viewBox="0 0 1440 340" preserveAspectRatio="none" aria-hidden="true">
+            <g class="signal-paths">
+              <path d="M420 250 C650 250 690 72 920 128 S1190 236 1440 64" />
+              <path d="M520 300 C690 278 756 116 956 154 S1230 204 1440 92" />
+              <path d="M630 326 C760 268 832 190 1010 182 S1260 160 1440 118" />
+              <path d="M690 52 C820 80 888 108 1012 136 S1260 126 1440 42" />
+              <path d="M850 20 C928 74 990 108 1100 120 S1300 90 1440 22" />
+              <path d="M740 312 C920 300 1040 230 1160 186 S1340 140 1440 132" />
+            </g>
+            <g class="signal-nodes">
+              <circle cx="690" cy="198" r="4" /><circle cx="830" cy="190" r="3" />
+              <circle cx="920" cy="128" r="5" /><circle cx="1012" cy="136" r="3" />
+              <circle cx="1100" cy="120" r="4" /><circle cx="1190" cy="182" r="3" />
+              <circle cx="1260" cy="160" r="5" /><circle cx="1360" cy="94" r="3" />
+            </g>
+          </svg>
+          <h1 id="mainTitle">Technology built for<br />what comes next.</h1>
+          <p>Explore NxtGen cloud, AI and digital infrastructure solutions. Select the brochures most relevant to your business priorities.</p>
+        </section>
+
+        <section class="catalog" aria-labelledby="catalogTitle">
+          <div class="section-heading">
+            <h2 id="catalogTitle">Choose your brochures</h2>
+            <span id="selectionCount">1 selected</span>
+          </div>
+          <div class="brochure-rail" id="brochureRail"></div>
+        </section>
+
+        <section class="experience" aria-label="Brochure preview and lead form">
+          <div class="viewer-column">
+            <div class="viewer-heading">
+              <div>
+                <span class="viewer-label">Brochure preview</span>
+                <h2 id="viewerTitle">SpeedCloud</h2>
+              </div>
+              <button class="icon-button" id="fullscreenButton" type="button" aria-label="Open full screen" title="Full screen">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3H3v5M16 3h5v5M21 16v5h-5M3 16v5h5" /></svg>
+              </button>
+            </div>
+
+            <div class="book-stage" id="bookStage">
+              <button class="page-arrow previous" id="previousPage" type="button" aria-label="Previous page">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6" /></svg>
+              </button>
+              <div class="book" id="book" aria-live="polite">
+                <article class="book-page left-page" id="leftPage"></article>
+                <article class="book-page right-page" id="rightPage"></article>
+                <div class="page-turn" id="pageTurn" aria-hidden="true"></div>
+              </div>
+              <button class="page-arrow next" id="nextPage" type="button" aria-label="Next page">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>
+              </button>
+            </div>
+
+            <div class="viewer-controls">
+              <div class="pager-control">
+                <button id="backControl" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6" /></svg> Back</button>
+                <span id="pageCount">2 / 8</span>
+                <button class="accent-outline" id="nextControl" type="button">Next <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg></button>
+              </div>
+              <div class="audio-control">
+                <button id="listenButton" type="button" aria-pressed="false">
+                  <svg class="speaker" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5Z" /><path d="M15 9.5a4 4 0 0 1 0 5M17.5 7a7 7 0 0 1 0 10" /></svg>
+                  <span id="listenLabel">Listen</span>
+                </button>
+                <button id="muteButton" type="button" aria-pressed="false">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5Z" /><path d="m16 10 4 4m0-4-4 4" /></svg>
+                  <span id="muteLabel">Mute</span>
+                </button>
+                <div class="audio-progress" aria-hidden="true"><span id="audioProgress"></span></div>
+              </div>
+            </div>
+          </div>
+
+          <aside class="lead-panel" aria-labelledby="formTitle">
+            <div class="form-copy">
+              <h2 id="formTitle">Get your selected brochures</h2>
+              <p>Enter your details to open or download the brochures you selected.</p>
+            </div>
+            <form id="leadForm" novalidate>
+              <label>Full name<input name="fullName" autocomplete="name" placeholder="Enter your full name" required /></label>
+              <label>Work email<input name="email" type="email" inputmode="email" autocomplete="email" autocapitalize="none" spellcheck="false" maxlength="254" placeholder="you@company.com" required /></label>
+              <label>Company<input name="company" autocomplete="organization" placeholder="Your company name" required /></label>
+              <label>Mobile number <span>(optional)</span><input name="mobile" type="tel" autocomplete="tel" inputmode="tel" maxlength="20" placeholder="+91 Enter mobile number" /></label>
+              <label class="consent"><input name="consent" type="checkbox" required /><span>I agree to access my selected NxtGen material.</span></label>
+              <p class="form-error" id="formError" role="alert"></p>
+              <button class="primary-button" id="sendButton" type="submit">Get selected brochures <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg></button>
+            </form>
+            <div class="success-state" id="successState" hidden>
+              <div class="success-mark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 12 4 4 8-9" /></svg></div>
+              <h2>Your brochures are ready</h2>
+              <p>Open or download your selected material below.</p>
+              <button class="secondary-button" id="newVisitorButton" type="button">Start a new selection</button>
+            </div>
+            <div class="privacy-note"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10" width="14" height="10" rx="2" /><path d="M8 10V7a4 4 0 0 1 8 0v3" /></svg><span>This direct-download edition does not transmit or retain your details.</span></div>
+          </aside>
+        </section>
+      </main>
+
+      <footer><span>&copy; 2026 NxtGen Datacenter &amp; Cloud Technologies</span><span>27th Annual CIO&amp;Leader Conference · Jaipur</span></footer>
+    </div>
+    <dialog class="sent-dialog" id="sentDialog" aria-labelledby="sentDialogTitle">
+      <div class="sent-dialog-card">
+        <div class="sent-dialog-mark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 12 4 4 8-9" /></svg></div>
+        <h2 id="sentDialogTitle">Your selected brochures are ready</h2>
+        <p class="sent-recipient">Prepared for <strong id="sentRecipient"></strong></p>
+        <div class="sent-brochures"><span>Open or download</span><ul id="sentBrochureList"></ul></div>
+        <button class="primary-button" id="dialogDoneButton" type="button">Done — start new selection</button>
+      </div>
+    </dialog>
+    <script src="config.js"></script>
+    <script src="assets/brochures/narration-data.js"></script>
+    <script src="app.js?v=20260728-1"></script>
+  </body>
+</html>
