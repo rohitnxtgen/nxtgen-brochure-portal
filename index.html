@@ -108,12 +108,13 @@
               <label>Mobile number <span>(optional)</span><input name="mobile" type="tel" autocomplete="tel" inputmode="tel" maxlength="20" placeholder="+91 Enter mobile number" /></label>
               <label class="consent"><input name="consent" type="checkbox" required /><span>I agree to access my selected NxtGen material.</span></label>
               <p class="form-error" id="formError" role="alert"></p>
-              <button class="primary-button" id="sendButton" type="submit">Get selected brochures <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg></button>
+              <button class="primary-button" id="sendButton" type="submit">Submit &amp; show download links <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg></button>
             </form>
             <div class="success-state" id="successState" hidden>
               <div class="success-mark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 12 4 4 8-9" /></svg></div>
               <h2>Your brochures are ready</h2>
-              <p>Open or download your selected material below.</p>
+              <p>Tap each selected brochure below to open or download the PDF.</p>
+              <div class="sent-brochures"><span>Your selected PDF downloads</span><ul id="successBrochureList"></ul></div>
               <button class="secondary-button" id="newVisitorButton" type="button">Start a new selection</button>
             </div>
             <div class="privacy-note"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10" width="14" height="10" rx="2" /><path d="M8 10V7a4 4 0 0 1 8 0v3" /></svg><span>Your details are submitted securely and used only for NxtGen follow-up.</span></div>
@@ -132,8 +133,8 @@
         <button class="primary-button" id="dialogDoneButton" type="button">Done — start new selection</button>
       </div>
     </dialog>
-    <script src="config.js?v=20260728-3"></script>
+    <script src="config.js?v=20260728-4"></script>
     <script src="assets/brochures/narration-data.js"></script>
-    <script src="app.js?v=20260728-3"></script>
+    <script src="app.js?v=20260728-4"></script>
   </body>
 </html>

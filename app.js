@@ -330,21 +330,24 @@ async function submitLead(event) {
     form.hidden = true;
     el("successState").hidden = false;
     el("sentRecipient").textContent = result.recipient || email;
-    el("sentBrochureList").replaceChildren(...selected.map((item) => {
+    const downloadItems = () => selected.map((item) => {
       const li = document.createElement("li");
       if (config.publicDemo || config.downloadDelivery) {
         const link = document.createElement("a");
         link.href = item.pdf;
-        link.textContent = item.title;
+        link.textContent = `Download ${item.title} (PDF)`;
         link.target = "_blank";
         link.rel = "noopener";
+        link.setAttribute("download", "");
         li.appendChild(link);
       } else {
         li.textContent = item.title;
       }
       return li;
-    }));
-    el("sentDialog").showModal?.();
+    });
+    el("successBrochureList").replaceChildren(...downloadItems());
+    el("sentBrochureList").replaceChildren(...downloadItems());
+    el("successState").scrollIntoView({ behavior: "smooth", block: "center" });
   } catch (sendError) {
     error.textContent = sendError.message || "The brochures could not be prepared.";
   } finally {
