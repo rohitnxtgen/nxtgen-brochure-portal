@@ -108,12 +108,12 @@
               <label>Mobile number <span>(optional)</span><input name="mobile" type="tel" autocomplete="tel" inputmode="tel" maxlength="20" placeholder="+91 Enter mobile number" /></label>
               <label class="consent"><input name="consent" type="checkbox" required /><span>I agree to access my selected NxtGen material.</span></label>
               <p class="form-error" id="formError" role="alert"></p>
-              <button class="primary-button" id="sendButton" type="submit">Submit &amp; show download links <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg></button>
+              <button class="primary-button" id="sendButton" type="submit">Email my selected brochures <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg></button>
             </form>
             <div class="success-state" id="successState" hidden>
               <div class="success-mark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 12 4 4 8-9" /></svg></div>
-              <h2>Your brochures are ready</h2>
-              <p>Tap each selected brochure below to open or download the PDF.</p>
+              <h2>Your brochures have been emailed</h2>
+              <p>Sent to <strong id="successRecipient"></strong>. You can also open or download the PDFs below.</p>
               <div class="sent-brochures"><span>Your selected PDF downloads</span><ul id="successBrochureList"></ul></div>
               <button class="secondary-button" id="newVisitorButton" type="button">Start a new selection</button>
             </div>
@@ -133,8 +133,8 @@
         <button class="primary-button" id="dialogDoneButton" type="button">Done — start new selection</button>
       </div>
     </dialog>
-    <script src="config.js?v=20260728-4"></script>
+    <script src="config.js?v=20260728-5"></script>
     <script src="assets/brochures/narration-data.js"></script>
-    <script src="app.js?v=20260728-4"></script>
+    <script src="app.js?v=20260728-5"></script>
   </body>
 </html>

@@ -195,23 +195,53 @@ function exportLeads() {
   URL.revokeObjectURL(link.href);
 }
 
-async function sendBrochures(url, lead) {
-  if (!url) throw new Error("Brochure delivery is not configured.");
+async function sendBrochures(config, lead) {
+  if (!config.leadEndpoint || !config.emailJsServiceId || !config.emailJsTemplateId || !config.emailJsPublicKey) {
+    throw new Error("Brochure email delivery is not configured.");
+  }
+  const brochureLinks = lead.brochures.map((title, index) => {
+    const url = new URL(lead.brochureFiles[index], window.location.href).href;
+    return `${title}: ${url}`;
+  }).join("\n\n");
   const submission = {
     ...lead,
     brochures: lead.brochures.join(" | "),
     brochureFiles: lead.brochureFiles.join(" | "),
+    brochureLinks,
     _subject: "New NxtGen brochure portal lead"
   };
-  const response = await fetch(url, {
+  const response = await fetch(config.leadEndpoint, {
     method: "POST",
     headers: { "Content-Type": "application/json", "Accept": "application/json" },
     body: JSON.stringify(submission)
   });
   let data = {};
   try { data = await response.json(); } catch (_) { data = {}; }
-  if (!response.ok || !data.ok) throw new Error(data.error || "The brochures could not be prepared. Please try again or contact the event team.");
-  return data;
+  if (!response.ok || !data.ok) throw new Error(data.error || "Your details could not be saved. Please try again.");
+
+  const emailResponse = await fetch("https://api.emailjs.com/api/v1.0/email/send", {
+    method: "POST",
+    headers: { "Content-Type": "application/json", "Accept": "text/plain" },
+    body: JSON.stringify({
+      service_id: config.emailJsServiceId,
+      template_id: config.emailJsTemplateId,
+      user_id: config.emailJsPublicKey,
+      template_params: {
+        to_email: lead.email,
+        to_name: lead.fullName,
+        company: lead.company,
+        brochure_links: brochureLinks,
+        selected_brochures: lead.brochures.join(", "),
+        reply_to: config.senderMailbox,
+        from_name: "NxtGen"
+      }
+    })
+  });
+  if (!emailResponse.ok) {
+    const emailError = (await emailResponse.text()).trim();
+    throw new Error(emailError || "The email could not be sent. Please check the EmailJS template.");
+  }
+  return { ok: true, recipient: lead.email, brochures: lead.brochures };
 }
 
 const EMAIL_DOMAIN_CORRECTIONS = {
@@ -319,9 +349,9 @@ async function submitLead(event) {
   try {
     const result = config.publicDemo
       ? { ok: true, recipient: email, brochures: selected.map((item) => item.title) }
-      : await sendBrochures(config.leadEndpoint, lead);
+      : await sendBrochures(config, lead);
     lead.synced = !config.publicDemo;
-    lead.emailQueued = false;
+    lead.emailQueued = !config.publicDemo;
     if (!config.publicDemo) {
       const leads = JSON.parse(localStorage.getItem("nxtgen-event-leads") || "[]");
       leads.push(lead);
@@ -330,6 +360,7 @@ async function submitLead(event) {
     form.hidden = true;
     el("successState").hidden = false;
     el("sentRecipient").textContent = result.recipient || email;
+    el("successRecipient").textContent = result.recipient || email;
     const downloadItems = () => selected.map((item) => {
       const li = document.createElement("li");
       if (config.publicDemo || config.downloadDelivery) {
