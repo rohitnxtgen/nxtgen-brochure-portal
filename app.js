@@ -229,9 +229,13 @@ async function sendBrochures(config, lead) {
       template_params: {
         to_email: lead.email,
         to_name: lead.fullName,
+        name: lead.fullName,
+        email: lead.email,
         company: lead.company,
         brochure_links: brochureLinks,
         selected_brochures: lead.brochures.join(", "),
+        message: `Thank you for connecting with NxtGen.\n\nYour selected brochures:\n\n${brochureLinks}`,
+        subject: "Your selected NxtGen brochures",
         reply_to: config.senderMailbox,
         from_name: "NxtGen"
       }
