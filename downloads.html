@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <title>Your selected NxtGen brochures</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+      :root { color-scheme: light; --ink:#14213d; --muted:#667085; --line:#dbe4ef; --blue:#2457d6; --cyan:#16a7c8; }
+      * { box-sizing: border-box; }
+      body { margin:0; min-height:100vh; font-family:"DM Sans",sans-serif; color:var(--ink); background:#fff; }
+      body::before { content:""; position:fixed; inset:0; pointer-events:none; background:radial-gradient(circle at 12% 10%,rgba(22,167,200,.12),transparent 34%),radial-gradient(circle at 90% 18%,rgba(36,87,214,.10),transparent 32%); }
+      main { position:relative; width:min(920px,calc(100% - 32px)); margin:0 auto; padding:56px 0 72px; }
+      .brand { display:flex; align-items:center; gap:14px; font-weight:700; letter-spacing:-.02em; }
+      .brand-mark { display:grid; place-items:center; width:42px; height:42px; border-radius:14px; color:#fff; background:linear-gradient(135deg,var(--blue),var(--cyan)); box-shadow:0 12px 30px rgba(36,87,214,.2); }
+      header { padding:48px 0 30px; border-bottom:1px solid var(--line); }
+      h1 { max-width:700px; margin:0 0 14px; font-size:clamp(32px,6vw,58px); line-height:1.02; letter-spacing:-.055em; }
+      header p { margin:0; color:var(--muted); font-size:18px; }
+      #brochureList { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px; padding-top:30px; }
+      .brochure { display:flex; flex-direction:column; min-height:180px; padding:24px; border:1px solid var(--line); border-radius:22px; background:rgba(255,255,255,.86); box-shadow:0 16px 44px rgba(20,33,61,.07); }
+      .eyebrow { color:var(--blue); font-size:12px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; }
+      h2 { margin:12px 0 8px; font-size:23px; letter-spacing:-.025em; }
+      .brochure p { margin:0 0 24px; color:var(--muted); }
+      a.button { display:inline-flex; align-items:center; justify-content:center; margin-top:auto; min-height:46px; padding:0 18px; border-radius:13px; color:#fff; background:linear-gradient(135deg,var(--blue),#347bdc); font-weight:700; text-decoration:none; }
+      .empty { grid-column:1/-1; padding:28px; border:1px solid var(--line); border-radius:20px; color:var(--muted); }
+      .back { display:inline-block; margin-top:28px; color:var(--blue); font-weight:700; text-decoration:none; }
+      @media (max-width:680px) { main{padding-top:28px} header{padding-top:36px} #brochureList{grid-template-columns:1fr} }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="brand"><span class="brand-mark">N</span><span>NxtGen</span></div>
+      <header>
+        <h1>Your selected brochures are ready.</h1>
+        <p>Open or download the NxtGen material selected during your visit.</p>
+      </header>
+      <section id="brochureList" aria-live="polite"></section>
+      <a class="back" href="./">Return to the brochure portal</a>
+    </main>
+    <script src="downloads.js?v=20260728-1"></script>
+  </body>
+</html>

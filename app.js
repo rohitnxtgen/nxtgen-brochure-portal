@@ -199,15 +199,32 @@ async function sendBrochures(config, lead) {
   if (!config.leadEndpoint || !config.emailJsServiceId || !config.emailJsTemplateId || !config.emailJsPublicKey) {
     throw new Error("Brochure email delivery is not configured.");
   }
-  const brochureLinks = lead.brochures.map((title, index) => {
-    const url = new URL(lead.brochureFiles[index], window.location.href).href;
-    return `${title}: ${url}`;
-  }).join("\n\n");
+  const brochureEntries = lead.brochures.map((title, index) => ({
+    title,
+    url: new URL(lead.brochureFiles[index], window.location.href).href
+  }));
+  const brochureLinks = brochureEntries.map(({ title, url }) => `${title}: ${url}`).join("\n\n");
+  const directLinks = brochureEntries.map(({ url }) => url).join("\n");
+  const deliveryUrl = new URL("downloads.html", window.location.href);
+  deliveryUrl.searchParams.set("items", lead.brochureIds.join(","));
+  const deliveryLink = deliveryUrl.href;
+  const emailMessage = [
+    `Hello ${lead.fullName},`,
+    "",
+    "Thank you for connecting with NxtGen.",
+    "",
+    "Open your selected brochures:",
+    deliveryLink,
+    "",
+    "Direct PDF links:",
+    brochureLinks
+  ].join("\n");
   const submission = {
     ...lead,
     brochures: lead.brochures.join(" | "),
     brochureFiles: lead.brochureFiles.join(" | "),
     brochureLinks,
+    deliveryLink,
     _subject: "New NxtGen brochure portal lead"
   };
   const response = await fetch(config.leadEndpoint, {
@@ -233,8 +250,19 @@ async function sendBrochures(config, lead) {
         email: lead.email,
         company: lead.company,
         brochure_links: brochureLinks,
+        brochure_link: deliveryLink,
+        brochure_url: deliveryLink,
+        download_link: deliveryLink,
+        download_url: deliveryLink,
+        portal_link: deliveryLink,
+        links: directLinks,
+        pdf_link: brochureEntries[0].url,
+        pdf_url: brochureEntries[0].url,
         selected_brochures: lead.brochures.join(", "),
-        message: `Thank you for connecting with NxtGen.\n\nYour selected brochures:\n\n${brochureLinks}`,
+        message: emailMessage,
+        content: emailMessage,
+        email_body: emailMessage,
+        body: emailMessage,
         subject: "Your selected NxtGen brochures",
         reply_to: config.senderMailbox,
         from_name: "NxtGen"
@@ -342,6 +370,7 @@ async function submitLead(event) {
   const lead = {
     capturedAt: new Date().toISOString(), fullName: nameCheck.value, email,
     company: companyCheck.value, mobile: mobileCheck.value,
+    brochureIds: selected.map((item) => item.id),
     brochures: selected.map((item) => item.title), brochureFiles: selected.map((item) => item.pdf),
     consent: true, synced: false, emailQueued: false
   };
