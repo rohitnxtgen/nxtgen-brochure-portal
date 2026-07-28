@@ -197,7 +197,17 @@ function exportLeads() {
 
 async function sendBrochures(url, lead) {
   if (!url) throw new Error("Brochure delivery is not configured.");
-  const response = await fetch(url, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(lead) });
+  const submission = {
+    ...lead,
+    brochures: lead.brochures.join(" | "),
+    brochureFiles: lead.brochureFiles.join(" | "),
+    _subject: "New NxtGen brochure portal lead"
+  };
+  const response = await fetch(url, {
+    method: "POST",
+    headers: { "Content-Type": "application/json", "Accept": "application/json" },
+    body: JSON.stringify(submission)
+  });
   let data = {};
   try { data = await response.json(); } catch (_) { data = {}; }
   if (!response.ok || !data.ok) throw new Error(data.error || "The brochures could not be prepared. Please try again or contact the event team.");

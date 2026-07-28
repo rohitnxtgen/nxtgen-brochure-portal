@@ -1,6 +1,6 @@
 window.NXTGEN_CONFIG = {
-  leadEndpoint: "",
+  leadEndpoint: "https://formspree.io/f/mgogdkey",
   senderMailbox: "marketing@nxtgen.com",
-  publicDemo: true,
+  publicDemo: false,
   downloadDelivery: true
 };
