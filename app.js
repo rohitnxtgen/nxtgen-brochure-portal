@@ -50,6 +50,20 @@ const brochures = [
     category: "Private cloud modernisation for AI adoption",
     pdf: "assets/brochures/supreme-redhat/supreme-redhat.pdf",
     pages: makePages("supreme-redhat", 3)
+  },
+  {
+    id: "customer-entitlements",
+    title: "SpeedCloud Customer Entitlements",
+    category: "Public cloud services, operations and responsibilities",
+    pdf: "assets/brochures/customer-entitlements/customer-entitlements.pdf",
+    pages: makePages("customer-entitlements", 38)
+  },
+  {
+    id: "supreme-customer-entitlements",
+    title: "SpeedCloud Supreme Customer Entitlements",
+    category: "Private cloud services, governance and responsibilities",
+    pdf: "assets/brochures/supreme-customer-entitlements/supreme-customer-entitlements.pdf",
+    pages: makePages("supreme-customer-entitlements", 27)
   }
 ];
 

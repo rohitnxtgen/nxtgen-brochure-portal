@@ -33,6 +33,16 @@ const brochureCatalog = {
     title: "SpeedCloud Supreme: Red Hat",
     category: "Private cloud modernisation for AI adoption",
     pdf: "assets/brochures/supreme-redhat/supreme-redhat.pdf"
+  },
+  "customer-entitlements": {
+    title: "SpeedCloud Customer Entitlements",
+    category: "Public cloud services, operations and responsibilities",
+    pdf: "assets/brochures/customer-entitlements/customer-entitlements.pdf"
+  },
+  "supreme-customer-entitlements": {
+    title: "SpeedCloud Supreme Customer Entitlements",
+    category: "Private cloud services, governance and responsibilities",
+    pdf: "assets/brochures/supreme-customer-entitlements/supreme-customer-entitlements.pdf"
   }
 };
 
