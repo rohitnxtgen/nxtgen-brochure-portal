@@ -12,10 +12,10 @@ const brochures = [
     id: "sovereign-ai-runtime",
     title: "Sovereign AI at Runtime",
     category: "Sovereign AI and inference e-book",
-    pdf: "assets/brochures/sovereign-ai-runtime/sovereign-ai-runtime.pdf",
+    pdf: "assets/brochures/sovereign-ai-runtime/sovereign-ai-runtime.pdf?v=20261012-2",
     singlePage: true,
     portraitPage: true,
-    pages: makePages("sovereign-ai-runtime", 14)
+    pages: makePages("sovereign-ai-runtime", 14).map((page) => `${page}?v=20261012-2`)
   },
   {
     id: "supreme",

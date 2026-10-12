@@ -7,7 +7,7 @@ const brochureCatalog = {
   "sovereign-ai-runtime": {
     title: "Sovereign AI at Runtime",
     category: "Sovereign AI and inference e-book",
-    pdf: "assets/brochures/sovereign-ai-runtime/sovereign-ai-runtime.pdf"
+    pdf: "assets/brochures/sovereign-ai-runtime/sovereign-ai-runtime.pdf?v=20261012-2"
   },
   supreme: {
     title: "SpeedCloud Supreme",
