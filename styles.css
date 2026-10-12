@@ -81,6 +81,9 @@ main { max-width: 1500px; margin: 0 auto; padding: 0 clamp(24px, 4vw, 72px) 72px
 .book-stage:fullscreen .book { width: min(92vw, 1415px); height: min(88vh, 1000px); }
 .book { width: min(800px, 100%); height: 540px; display: grid; grid-template-columns: 1fr 1fr; perspective: 1600px; filter: drop-shadow(0 22px 24px rgba(3,18,62,.18)); position: relative; }
 .book.single-page-book { width: min(960px, 100%); grid-template-columns: 1fr; }
+.book-stage.portrait-book-stage { min-height: 0; }
+.book.single-page-book.portrait-page-book { width: min(480px, 100%); height: auto; aspect-ratio: 595 / 842; }
+.book-stage:fullscreen .book.portrait-page-book { width: min(62vh, 92vw); height: min(88vh, 1000px); }
 .book.single-page-book .right-page { display: none; }
 .book.single-page-book .left-page { border-radius: 10px; box-shadow: none; }
 .book.single-page-book .page-turn { width: 100%; border-radius: 10px; }

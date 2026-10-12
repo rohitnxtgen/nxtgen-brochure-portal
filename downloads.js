@@ -4,6 +4,11 @@ const brochureCatalog = {
     category: "Performance benchmark brief",
     pdf: "assets/brochures/speedcloud/speedcloud.pdf"
   },
+  "sovereign-ai-runtime": {
+    title: "Sovereign AI at Runtime",
+    category: "Sovereign AI and inference e-book",
+    pdf: "assets/brochures/sovereign-ai-runtime/sovereign-ai-runtime.pdf"
+  },
   supreme: {
     title: "SpeedCloud Supreme",
     category: "Performance benchmark report",

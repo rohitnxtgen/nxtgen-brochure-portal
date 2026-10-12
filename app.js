@@ -9,6 +9,15 @@ const brochures = [
     pages: makePages("speedcloud", 6)
   },
   {
+    id: "sovereign-ai-runtime",
+    title: "Sovereign AI at Runtime",
+    category: "Sovereign AI and inference e-book",
+    pdf: "assets/brochures/sovereign-ai-runtime/sovereign-ai-runtime.pdf",
+    singlePage: true,
+    portraitPage: true,
+    pages: makePages("sovereign-ai-runtime", 14)
+  },
+  {
     id: "supreme",
     title: "SpeedCloud Supreme",
     category: "Performance benchmark report",
@@ -123,6 +132,8 @@ function renderBook(direction = "next") {
   const rightIndex = Math.min(leftIndex + 1, brochure.pages.length - 1);
   const single = singlePageMode();
   el("book").classList.toggle("single-page-book", single);
+  el("book").classList.toggle("portrait-page-book", brochure.portraitPage === true);
+  el("bookStage").classList.toggle("portrait-book-stage", brochure.portraitPage === true);
   el("viewerTitle").textContent = brochure.title;
   el("leftPage").innerHTML = pageMarkup(brochure.pages[leftIndex], leftIndex, brochure.title);
   el("rightPage").innerHTML = pageMarkup(brochure.pages[rightIndex], rightIndex, brochure.title);
