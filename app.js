@@ -18,6 +18,15 @@ const brochures = [
     pages: makePages("sovereign-ai-runtime", 14).map((page) => `${page}?v=20261012-2`)
   },
   {
+    id: "svaiam",
+    title: "SVAIAM White Paper",
+    category: "Sovereign AI architecture and implementation",
+    pdf: "assets/brochures/svaiam/svaiam-white-paper.pdf",
+    singlePage: true,
+    portraitPage: true,
+    pages: makePages("svaiam", 28)
+  },
+  {
     id: "supreme",
     title: "SpeedCloud Supreme",
     category: "Performance benchmark report",

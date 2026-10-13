@@ -9,6 +9,11 @@ const brochureCatalog = {
     category: "Sovereign AI and inference e-book",
     pdf: "assets/brochures/sovereign-ai-runtime/sovereign-ai-runtime.pdf?v=20261012-2"
   },
+  svaiam: {
+    title: "SVAIAM White Paper",
+    category: "Sovereign AI architecture and implementation",
+    pdf: "assets/brochures/svaiam/svaiam-white-paper.pdf"
+  },
   supreme: {
     title: "SpeedCloud Supreme",
     category: "Performance benchmark report",
